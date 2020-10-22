@@ -28,12 +28,12 @@ public class CarController {
         return Optional.of("Car not found");
     }
 
-    //  POST -> {"modelName":"VW2"}  to INSERT entry
+    //  POST -> {"modelName":"VW"} to INSERT or {"id":5,"modelName":"VW"} to UPDATE entry
     @PostMapping("/rest/car")
     public ResponseEntity<?> addCar(@RequestBody Car car) {
         Car newCar = new Car(car.getId(), car.getModelName());
         carsRepository.save(newCar);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     //-> http://localhost:8080/rest/allcars
@@ -41,4 +41,5 @@ public class CarController {
     public Iterable<Car> showAll() {
         return carsRepository.findAll();
     }
+
 }
