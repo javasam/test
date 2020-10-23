@@ -38,7 +38,7 @@ public class CarController {
     }
 
     //-> http://localhost:8080/rest/allcars
-    @RequestMapping("/rest/allcars")
+    @RequestMapping("/allcars")
     public Iterable<Car> showAll() {
         return carsRepository.findAll();
     }
